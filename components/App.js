@@ -15,33 +15,33 @@
   export default class App extends Component {
 
     // Add change listeners to stores
-    componentDidMount() {
+    componentDidMount(){
       AppStore.addChangeListener(this._onChange.bind(this))
     }
 
     // Remove change listeners from stores
-    componentWillUnmount() {
+    componentWillUnmount(){
       AppStore.removeChangeListener(this._onChange.bind(this))
     }
 
-    _onChange() {
-      this.setState(AppStore)
-    }
-
-    getStore() {
-      AppDispatcher.dispatcher({
+    getStore(){
+      AppDispatcher.dispatch({
         action: 'get-app-store'
       })
     }
 
-    render() {
+    _onChange(){
+      this.setState(AppStore)
+    }
+
+    render(){
 
       const data = AppStore.data
 
       // Show loading for browser
       if(!data.ready){
 
-        document.body.className=''
+        document.body.className = ''
         this.getStore()
 
         let style = {
@@ -49,7 +49,7 @@
         }
         return (
           <div className="container text-center" style={ style }>
-           <Loading />
+            <Loading />
           </div>
         )
       }
@@ -59,9 +59,9 @@
 
       return (
         <div>
-          <Nav data={ data } />
+          <Nav data={ data }/>
           { Routes }
-          <Footer data={ data } />
+          <Footer data={ data }/>
         </div>
       )
     }

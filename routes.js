@@ -17,8 +17,6 @@
   export default (
     <Route path="/" data={AppStore.data} component={App}>
       <IndexRoute component={Blog} />
-      <Route path="about" component={About} />
-      <Route path="contact" component={Contact} />
       <Route path="work" component={Work} />
       <Route path="/work/:slug" component={Work} />
       <Route path="/blog/:slug" component={Blog} />

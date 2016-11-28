@@ -1,10 +1,10 @@
-  // AppStore.js
+  // AppStore.js  
   import { EventEmitter } from 'events'
   import _ from 'lodash'
 
   export default _.extend({}, EventEmitter.prototype, {
 
-    // initial data
+    // Initial data
     data: {
       ready: false,
       globals: {},
@@ -12,17 +12,18 @@
       item_num: 5
     },
 
-    // emit change events
-    emitChange () => {
+    // Emit Change event
+    emitChange: function(){
       this.emit('change')
     },
 
-    addChangeListener (callback) => {
+    // Add change listener
+    addChangeListener: function(callback){
       this.on('change', callback)
     },
 
-    // remove change listener
-    removeChangeListener (callback) => {
+    // Remove change listener
+    removeChangeListener: function(callback) {
       this.removeListener('change', callback)
     }
 
